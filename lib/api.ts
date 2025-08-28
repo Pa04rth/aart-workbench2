@@ -1,7 +1,7 @@
 import { Scenario, TranscriptItem } from "./types";
 
 const determineVerdict = (
-  agentOutput: any
+  agentOutput: unknown
 ): { verdict: "pass" | "fail"; summary: string } => {
   const outputString = JSON.stringify(agentOutput).toLowerCase();
 

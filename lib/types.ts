@@ -1,6 +1,6 @@
 type TranscriptItem = {
   speaker: "user" | "agent" | "system";
-  content: string | { tool: string; args: any }; //content can be a string or an obj with tool=name and args =arguments
+  content: string | { tool: string; args: Record<string, unknown> }; //content can be a string or an obj with tool=name and args =arguments
 };
 
 type Scenario = {

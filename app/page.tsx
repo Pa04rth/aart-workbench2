@@ -58,6 +58,7 @@ export default function WorkbenchPage() {
     };
 
     fetchScenarios();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleScenarioSelect = async (scenario: Scenario) => {
@@ -75,8 +76,12 @@ export default function WorkbenchPage() {
       try {
         const liveReport = await runLiveTest(agentUrl, scenario);
         setCurrentReport(liveReport);
-      } catch (e: any) {
-        setError(`Live test failed: ${e.message}`);
+      } catch (e: unknown) {
+        if (e instanceof Error) {
+          setError(`Live test failed: ${e.message}`);
+        } else {
+          setError("An unknown error occurred during the live test.");
+        }
       } finally {
         setIsLoading(false);
       }
