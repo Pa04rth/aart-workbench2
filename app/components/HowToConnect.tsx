@@ -96,7 +96,7 @@ async def invoke_agent(request: InvokeRequest):
         </p>
         <ol className="list-decimal list-inside space-y-2 bg-gray-900 p-4 rounded-md">
           <li>
-            Install ngrok if you haven't already:{" "}
+            Install ngrok if you havent already:{" "}
             <code className="bg-gray-700 px-1 rounded">pip install ngrok</code>
           </li>
           <li>
@@ -110,7 +110,7 @@ async def invoke_agent(request: InvokeRequest):
             <code className="bg-gray-700 px-1 rounded">ngrok http 8000</code>
           </li>
           <li>
-            Copy the public 'Forwarding' URL (it looks like{" "}
+            Copy the public <code>Forwarding</code> URL (it looks like{" "}
             <code className="bg-gray-700 px-1 rounded">
               https://....ngrok-free.app
             </code>
