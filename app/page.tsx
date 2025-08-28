@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Scenario } from "@/lib/types";
 import ScenarioList from "@/app/components/ScenarioList";
-import { ReportView } from "@/app/components/ReportView";
+import ReportView from "@/app/components/ReportView";
 import ApiKeyInput from "@/app/components/ApiKeyInput";
 import HowToConnect from "@/app/components/HowToConnect";
 import { runLiveTest } from "@/lib/api";
