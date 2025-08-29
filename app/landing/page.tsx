@@ -15,7 +15,7 @@ export default function LandingPage() {
             Orchestrate, execute, and analyze security tests against your AI agents in real-time.
           </p>
           <Link
-            href="/"
+            href="/workbench"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
           >
             Go to Workbench
@@ -103,7 +103,7 @@ export default function LandingPage() {
             Ready to Secure Your Agents?
           </h2>
           <Link
-            href="/"
+            href="/workbench"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
           >
             Go to Workbench
