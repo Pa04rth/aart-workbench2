@@ -81,10 +81,9 @@ export default function LandingPage() {
           </h2>
           <p className="text-lg text-gray-300 mb-8 leading-relaxed">
             Our entire testing methodology is built upon the comprehensive
-            research and threat modeling detailed in the Cloud Security
-            Alliance's Agentic AI Red Teaming Guide. We extend our gratitude to
-            the CSA community for their foundational work in securing the future
-            of AI.
+            research and threat modeling detailed in the Cloud Security Alliance
+            Agentic AI Red Teaming Guide. We extend our gratitude to the CSA
+            community for their foundational work in securing the future of AI.
           </p>
           <a
             href="https://cloudsecurityalliance.org"
