@@ -12,7 +12,8 @@ export default function LandingPage() {
             The Adversarial Simulator for Agentic AI
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Orchestrate, execute, and analyze security tests against your AI agents in real-time.
+            Orchestrate, execute, and analyze security tests against your AI
+            agents in real-time.
           </p>
           <Link
             href="/workbench"
@@ -36,8 +37,8 @@ export default function LandingPage() {
                 Interactive Threat Simulation
               </h3>
               <p className="text-gray-300 leading-relaxed">
-                Explore the 12 core threats from the official CSA guide in a risk-free, 
-                pre-recorded showcase.
+                Explore the 12 core threats from the official CSA guide in a
+                risk-free, pre-recorded showcase.
               </p>
             </div>
 
@@ -50,7 +51,7 @@ export default function LandingPage() {
                 Live Agent Testing
               </h3>
               <p className="text-gray-300 leading-relaxed">
-                Securely connect your own LangChain or custom agent via a simple 
+                Securely connect your own LangChain or custom agent via a simple
                 webhook to test its real-world resilience.
               </p>
             </div>
@@ -64,7 +65,7 @@ export default function LandingPage() {
                 Instant, Actionable Reporting
               </h3>
               <p className="text-gray-300 leading-relaxed">
-                Automatically generate and export detailed Markdown reports, 
+                Automatically generate and export detailed Markdown reports,
                 ready for your findings and tickets.
               </p>
             </div>
@@ -79,10 +80,11 @@ export default function LandingPage() {
             Rooted in Industry-Leading Research
           </h2>
           <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-            Our entire testing methodology is built upon the comprehensive research 
-            and threat modeling detailed in the Cloud Security Alliance's 'Agentic AI 
-            Red Teaming Guide'. We extend our gratitude to the CSA community for their 
-            foundational work in securing the future of AI.
+            Our entire testing methodology is built upon the comprehensive
+            research and threat modeling detailed in the Cloud Security
+            Alliance's Agentic AI Red Teaming Guide. We extend our gratitude to
+            the CSA community for their foundational work in securing the future
+            of AI.
           </p>
           <a
             href="https://cloudsecurityalliance.org"
