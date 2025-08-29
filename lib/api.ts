@@ -51,11 +51,19 @@ export const runLiveTest = async (
 
   // *** THE FIX IS HERE ***
   try {
+    // Create AbortController for timeout handling
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
     const response = await fetch(agentUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ input: promptInput }),
+      signal: controller.signal,
     });
+
+    // Clear the timeout if request completes successfully
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       throw new Error(
@@ -109,6 +117,11 @@ export const runLiveTest = async (
   } catch (error: unknown) {
     // Step 1: Catch the error as 'unknown'.
     console.error("Live test failed:", error);
+
+    // Handle AbortError specifically for timeout cases
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error("Request timed out after 10 seconds. Please check the agent URL and try again.");
+    }
 
     // Step 2: Check if the 'unknown' error is an actual Error object.
     if (error instanceof Error) {
