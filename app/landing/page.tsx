@@ -1,23 +1,43 @@
+// app/page.tsx
+
 import Link from "next/link";
-import { Shield, Zap, FileText, ExternalLink } from "lucide-react";
+// Import new icons for the footer
+import {
+  ShieldCheck,
+  Zap,
+  FileCode,
+  ExternalLink,
+  Github,
+  Linkedin,
+  Bot,
+} from "lucide-react";
+import { Navbar } from "@/app/components/Navbar";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <main className="min-h-screen bg-zinc-950 text-zinc-200 font-sans antialiased">
+      <Navbar />
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-gray-950"></div>
-        <div className="relative max-w-6xl mx-auto px-6 py-24 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight">
+      <section className="relative py-24 md:py-32">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-20"
+        >
+          <div className="blur-[106px] h-56 bg-gradient-to-br from-cyan-500 to-blue-600"></div>
+          <div className="blur-[106px] h-32 bg-gradient-to-r from-violet-500 to-purple-600"></div>
+        </div>
+        <div className="relative max-w-6xl mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent leading-tight">
             The Adversarial Simulator for Agentic AI
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-zinc-400 mb-12 max-w-3xl mx-auto">
             Orchestrate, execute, and analyze security tests against your AI
-            agents in real-time.
+            agents in real-time—right from your browser.
           </p>
           <Link
             href="/workbench"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
+            className="inline-flex items-center justify-center px-8 py-4 bg-cyan-400 text-black font-bold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-cyan-300 shadow-lg shadow-cyan-500/10"
           >
             Go to Workbench
           </Link>
@@ -25,46 +45,41 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-900/50">
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-12">
-            {/* Feature 1 */}
-            <div className="text-center group">
-              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Shield className="w-8 h-8 text-white" />
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/50 hover:-translate-y-1">
+              <div className="w-12 h-12 mb-6 bg-cyan-400/10 rounded-lg flex items-center justify-center border border-cyan-400/30">
+                <ShieldCheck className="w-6 h-6 text-cyan-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">
+              <h3 className="text-xl font-bold mb-3 text-white">
                 Interactive Threat Simulation
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-zinc-400 leading-relaxed">
                 Explore the 12 core threats from the official CSA guide in a
                 risk-free, pre-recorded showcase.
               </p>
             </div>
-
-            {/* Feature 2 */}
-            <div className="text-center group">
-              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-8 h-8 text-white" />
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-emerald-400/50 hover:-translate-y-1">
+              <div className="w-12 h-12 mb-6 bg-emerald-400/10 rounded-lg flex items-center justify-center border border-emerald-400/30">
+                <Zap className="w-6 h-6 text-emerald-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">
+              <h3 className="text-xl font-bold mb-3 text-white">
                 Live Agent Testing
               </h3>
-              <p className="text-gray-300 leading-relaxed">
-                Securely connect your own LangChain or custom agent via a simple
-                webhook to test its real-world resilience.
+              <p className="text-zinc-400 leading-relaxed">
+                Securely connect your own LangChain agent via a simple webhook
+                to test its real-world resilience.
               </p>
             </div>
-
-            {/* Feature 3 */}
-            <div className="text-center group">
-              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <FileText className="w-8 h-8 text-white" />
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-violet-400/50 hover:-translate-y-1">
+              <div className="w-12 h-12 mb-6 bg-violet-400/10 rounded-lg flex items-center justify-center border border-violet-400/30">
+                <FileCode className="w-6 h-6 text-violet-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">
+              <h3 className="text-xl font-bold mb-3 text-white">
                 Instant, Actionable Reporting
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-zinc-400 leading-relaxed">
                 Automatically generate and export detailed Markdown reports,
                 ready for your findings and tickets.
               </p>
@@ -74,52 +89,142 @@ export default function LandingPage() {
       </section>
 
       {/* Research Section */}
-      <section className="py-20 bg-gray-950">
+      <section className="py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             Rooted in Industry-Leading Research
           </h2>
-          <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-            Our entire testing methodology is built upon the comprehensive
-            research and threat modeling detailed in the Cloud Security Alliance
-            Agentic AI Red Teaming Guide. We extend our gratitude to the CSA
-            community for their foundational work in securing the future of AI.
+          <p className="text-lg text-zinc-400 mb-10 leading-relaxed">
+            Our methodology is built upon the comprehensive threat modeling in
+            the Cloud Security Alliance's Agentic AI Red Teaming Guide.
           </p>
           <a
-            href="https://cloudsecurityalliance.org"
+            href="https://cloudsecurityalliance.org/research/working-groups/ai-organizational-responsibilities"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white font-semibold rounded-lg transition-all duration-300 group"
+            className="inline-flex items-center px-6 py-3 border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:border-zinc-600 hover:text-white font-semibold rounded-lg transition-all duration-300 group"
           >
             Read the Full CSA Guide Here
-            <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            <ExternalLink className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-gray-900 to-gray-950">
+      {/* NEW: Connect with CSA Section */}
+      <section className="py-20 bg-gray-900/30">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
-            Ready to Secure Your Agents?
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-white">
+            Connect with the Community
           </h2>
-          <Link
-            href="/workbench"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
-          >
-            Go to Workbench
-          </Link>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* GitHub Card */}
+            <a
+              href="https://github.com/cloudsecurityalliance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/50 hover:-translate-y-1"
+            >
+              <Github className="w-10 h-10 mx-auto mb-4 text-cyan-400" />
+              <h3 className="text-xl font-bold mb-2 text-white">
+                CSA on GitHub
+              </h3>
+              <p className="text-zinc-400">
+                Explore open-source projects, contribute to research, and engage
+                with the code.
+              </p>
+            </a>
+            {/* LinkedIn Card */}
+            <a
+              href="https://www.linkedin.com/company/cloud-security-alliance/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/50 hover:-translate-y-1"
+            >
+              <Linkedin className="w-10 h-10 mx-auto mb-4 text-cyan-400" />
+              <h3 className="text-xl font-bold mb-2 text-white">
+                CSA on LinkedIn
+              </h3>
+              <p className="text-zinc-400">
+                Follow for the latest announcements, research publications, and
+                industry news.
+              </p>
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 bg-gray-950 border-t border-gray-800">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-gray-400">
-            © 2025 AART Workbench. Open source cybersecurity for the AI era.
+      {/* NEW: Upgraded Footer */}
+      <footer className="py-12 bg-zinc-900 border-t border-zinc-800">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Column 1: Project Info */}
+          <div className="md:col-span-1">
+            <div className="flex items-center mb-4">
+              <Bot className="w-8 h-8 text-cyan-400" />
+              <span className="ml-3 text-lg font-bold text-white">
+                AART Workbench
+              </span>
+            </div>
+            <p className="text-zinc-400 text-sm">
+              Open source cybersecurity for the AI era. Built with passion by
+              the community, for the community.
+            </p>
+          </div>
+
+          {/* Column 2: Project Links */}
+          <div>
+            <h4 className="text-md font-semibold text-white mb-4">Project</h4>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="https://github.com/Pa04rth/aart-workbench2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-zinc-400 hover:text-cyan-400 transition-colors"
+                >
+                  <Github className="w-4 h-4 mr-2" />
+                  View Source on GitHub
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Connect with Parth */}
+          <div>
+            <h4 className="text-md font-semibold text-white mb-4">
+              Connect with Parth
+            </h4>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="https://github.com/Pa04rth/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-zinc-400 hover:text-cyan-400 transition-colors"
+                >
+                  <Github className="w-4 h-4 mr-2" />
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/parthsohaney/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-zinc-400 hover:text-cyan-400 transition-colors"
+                >
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto px-6 mt-12 text-center border-t border-zinc-800 pt-8">
+          <p className="text-zinc-500 text-sm">
+            © 2025 AART Workbench. All rights reserved.
           </p>
         </div>
       </footer>
-    </div>
+    </main>
   );
 }

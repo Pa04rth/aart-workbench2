@@ -1,7 +1,10 @@
+// app/workbench/page.tsx
+
 "use client";
 
 import React, { useState, useEffect } from "react";
 import { Scenario } from "@/lib/types";
+import { Navbar } from "@/app/components/Navbar";
 import ScenarioList from "@/app/components/ScenarioList";
 import ReportView from "@/app/components/ReportView";
 import ApiKeyInput from "@/app/components/ApiKeyInput";
@@ -13,21 +16,13 @@ export default function WorkbenchPage() {
   const [allScenarios, setAllScenarios] = useState<Scenario[]>([]);
   const [currentReport, setCurrentReport] = useState<Scenario | null>(null);
   const [agentUrl, setAgentUrl] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [showHowTo, setShowHowTo] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchScenarios = async () => {
       try {
-        const scenarioFiles = Array.from(
-          { length: 12 },
-          (_, i) =>
-            `${String(i + 1).padStart(2, "0")}-${
-              allScenarios[i] || "temp"
-            }.json`
-        );
-        // A temporary list of filenames based on your JSON structure
         const scenarioFilenames = [
           "01-control-hijacking.json",
           "02-checker-out-of-loop.json",
@@ -42,7 +37,6 @@ export default function WorkbenchPage() {
           "11-agent-supply-chain-and-dependency-attacks.json",
           "12-agent-untraceability.json",
         ];
-
         const scenariosData = await Promise.all(
           scenarioFilenames.map((file) =>
             fetch(`/scenarios/${file}`).then((res) => res.json())
@@ -54,16 +48,15 @@ export default function WorkbenchPage() {
           "Failed to load scenario files. Please check the /public/scenarios directory."
         );
         console.error(e);
+      } finally {
+        setIsLoading(false);
       }
     };
-
     fetchScenarios();
-    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleScenarioSelect = async (scenario: Scenario) => {
     setError(null);
-
     if (mode === "demo") {
       setCurrentReport(scenario);
     } else {
@@ -88,77 +81,97 @@ export default function WorkbenchPage() {
     }
   };
 
+  const handleRunAll = () => {
+    if (mode === "live" && allScenarios.length > 0) {
+      handleScenarioSelect(allScenarios[0]);
+    }
+  };
+
   return (
-    <main className="flex h-screen bg-gray-900 text-white font-sans">
-      <div className="flex flex-col w-1/3 border-r border-gray-700">
-        <div className="p-4 border-b border-gray-700">
-          <h1 className="text-2xl font-bold">AART Workbench</h1>
-          <div className="mt-4 flex space-x-2">
-            <button
-              onClick={() => setMode("demo")}
-              className={`px-4 py-2 rounded-md text-sm font-bold ${
-                mode === "demo"
-                  ? "bg-blue-600"
-                  : "bg-gray-700 hover:bg-gray-600"
-              }`}
-            >
-              Demo Mode
-            </button>
-            <button
-              onClick={() => setMode("live")}
-              className={`px-4 py-2 rounded-md text-sm font-bold ${
-                mode === "live"
-                  ? "bg-blue-600"
-                  : "bg-gray-700 hover:bg-gray-600"
-              }`}
-            >
-              Live Test
-            </button>
-          </div>
-        </div>
-
-        <div className="flex-grow overflow-y-auto">
-          <ScenarioList
-            scenarios={allScenarios}
-            onScenarioSelect={handleScenarioSelect}
-            isLoading={isLoading}
-            activeScenarioName={currentReport?.test_name || null}
-          />
-        </div>
-
-        {mode === "live" && (
-          <div>
-            <ApiKeyInput
-              url={agentUrl}
-              setUrl={setAgentUrl}
-              onConnect={() => handleScenarioSelect(allScenarios[0])}
-              isLoading={isLoading}
-            />
-            <div className="p-4">
+    <div className="flex flex-col h-screen bg-zinc-950 text-white font-sans">
+      <Navbar />
+      <main className="flex flex-grow overflow-hidden">
+        {/* Left Panel */}
+        <div className="flex flex-col w-[35%] max-w-md border-r border-zinc-800 bg-zinc-950">
+          <div className="p-4 border-b border-zinc-800">
+            <h1 className="text-xl font-bold">Workbench</h1>
+            <div className="mt-4 flex space-x-2">
               <button
-                onClick={() => setShowHowTo(!showHowTo)}
-                className="text-blue-400 hover:underline text-sm"
+                onClick={() => setMode("demo")}
+                className={`px-4 py-2 rounded-md text-sm font-bold transition-colors ${
+                  mode === "demo"
+                    ? "bg-cyan-400 text-black"
+                    : "bg-zinc-800 hover:bg-zinc-700 text-zinc-300"
+                }`}
               >
-                {showHowTo ? "Hide connection guide" : "Show connection guide"}
+                Demo Mode
+              </button>
+              <button
+                onClick={() => setMode("live")}
+                className={`px-4 py-2 rounded-md text-sm font-bold transition-colors ${
+                  mode === "live"
+                    ? "bg-cyan-400 text-black"
+                    : "bg-zinc-800 hover:bg-zinc-700 text-zinc-300"
+                }`}
+              >
+                Live Test
               </button>
             </div>
           </div>
-        )}
-      </div>
 
-      <div className="w-2/3 flex flex-col">
-        {mode === "live" && showHowTo && <HowToConnect />}
-
-        {error && (
-          <div className="p-4 bg-red-800 text-white m-4 rounded-md">
-            {error}
+          <div className="flex-grow overflow-y-auto">
+            <ScenarioList
+              scenarios={allScenarios}
+              onScenarioSelect={handleScenarioSelect}
+              isLoading={isLoading}
+              activeScenarioName={currentReport?.test_name || null}
+            />
           </div>
-        )}
 
-        <div className="flex-grow">
-          <ReportView report={currentReport} />
+          {mode === "live" && (
+            <div>
+              <ApiKeyInput
+                url={agentUrl}
+                setUrl={setAgentUrl}
+                onConnect={handleRunAll}
+                isLoading={isLoading}
+              />
+              <div className="p-4 text-center border-t border-zinc-800">
+                <button
+                  onClick={() => setShowHowTo(!showHowTo)}
+                  className="text-cyan-400 hover:underline text-sm font-semibold"
+                >
+                  {showHowTo
+                    ? "Hide Connection Guide"
+                    : "Show Connection Guide"}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-      </div>
-    </main>
+
+        {/* Right Panel */}
+        <div className="flex-grow flex flex-col overflow-y-hidden bg-zinc-900">
+          {mode === "live" && showHowTo && (
+            <div className="overflow-y-auto border-b border-zinc-800">
+              <HowToConnect />
+            </div>
+          )}
+
+          {error && (
+            <div className="p-4 bg-red-900/50 text-red-300 border border-red-800 m-4 rounded-lg">
+              {error}
+            </div>
+          )}
+
+          <div className="flex-grow overflow-y-auto">
+            <ReportView
+              report={currentReport}
+              isLoading={isLoading && !showHowTo}
+            />
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }
