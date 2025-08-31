@@ -96,7 +96,7 @@ export default function LandingPage() {
           </h2>
           <p className="text-lg text-zinc-400 mb-10 leading-relaxed">
             Our methodology is built upon the comprehensive threat modeling in
-            the Cloud Security Alliance's Agentic AI Red Teaming Guide.
+            the Cloud Security Alliance Agentic AI Red Teaming Guide.
           </p>
           <a
             href="https://cloudsecurityalliance.org/research/working-groups/ai-organizational-responsibilities"
