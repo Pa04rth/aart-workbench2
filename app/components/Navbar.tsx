@@ -20,7 +20,7 @@ export const Navbar = () => {
           {/* Navigation Buttons */}
           <nav className="flex items-center space-x-4">
             <a
-              href="https://cloudsecurityalliance.org/research/working-groups/ai-organizational-responsibilities"
+              href="https://cloudsecurityalliance.org/artifacts/agentic-ai-red-teaming-guide"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 text-zinc-300 hover:text-white transition-colors duration-300 hidden sm:inline-block"
