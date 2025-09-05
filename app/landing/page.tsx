@@ -88,25 +88,38 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Research Section */}
       <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-            Rooted in Industry-Leading Research
-          </h2>
-          <p className="text-lg text-zinc-400 mb-10 leading-relaxed">
-            Our methodology is built upon the comprehensive threat modeling in
-            the Cloud Security Alliance Agentic AI Red Teaming Guide.
-          </p>
-          <a
-            href="https://cloudsecurityalliance.org/research/working-groups/ai-organizational-responsibilities"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:border-zinc-600 hover:text-white font-semibold rounded-lg transition-all duration-300 group"
-          >
-            Read the Full CSA Guide Here
-            <ExternalLink className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          {/* Text Section */}
+          <div className="text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+              Rooted in Industry-Leading Research
+            </h2>
+            <p className="text-lg text-zinc-400 mb-10 leading-relaxed">
+              Our methodology is built upon the comprehensive threat modeling in
+              the Cloud Security Alliance Agentic AI Red Teaming Guide.
+            </p>
+            <a
+              href="https://cloudsecurityalliance.org/research/working-groups/ai-organizational-responsibilities"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:border-zinc-600 hover:text-white font-semibold rounded-lg transition-all duration-300 group"
+            >
+              Read the Full CSA Guide Here
+              <ExternalLink className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
+
+          {/* Image Section */}
+          <div className="relative group">
+            <img
+              src="aart.png"
+              alt="Industry Research Illustration"
+              className="w-full h-auto rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-105"
+            />
+            {/* Decorative gradient overlay */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-zinc-900/40 via-transparent to-zinc-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
         </div>
       </section>
 
