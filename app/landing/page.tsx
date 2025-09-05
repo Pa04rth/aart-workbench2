@@ -93,11 +93,18 @@ export default function LandingPage() {
           {/* Text Section */}
           <div className="text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-              Rooted in Industry-Leading Research
+              Agentic AI Red Teaming Simulation
             </h2>
-            <p className="text-lg text-zinc-400 mb-10 leading-relaxed">
-              Our methodology is built upon the comprehensive threat modeling in
-              the Cloud Security Alliance Agentic AI Red Teaming Guide.
+            <p className="text-lg text-zinc-400 mb-6 leading-relaxed">
+              This system is built upon the{" "}
+              <span className="font-semibold text-white">
+                Cloud Security Alliance (CSA) Agentic AI Red Teaming Guide
+              </span>
+              , incorporating industry-leading research into a practical,
+              simulation-based framework.
+            </p>
+            <p className="text-sm text-zinc-500 italic mb-10">
+              Research credit: Cloud Security Alliance (CSA)
             </p>
             <a
               href="https://cloudsecurityalliance.org/research/working-groups/ai-organizational-responsibilities"
@@ -110,14 +117,14 @@ export default function LandingPage() {
             </a>
           </div>
 
-          {/* Image Section */}
+          {/* Image Section (CSA Guide Cover) */}
           <div className="relative group">
             <img
-              src="aart.png"
-              alt="Industry Research Illustration"
+              src="aart.png" // Replace with actual guide cover image
+              alt="CSA Agentic AI Red Teaming Guide Cover"
               className="w-full h-auto rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-105"
             />
-            {/* Decorative gradient overlay */}
+            {/* Decorative overlay */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-zinc-900/40 via-transparent to-zinc-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         </div>
